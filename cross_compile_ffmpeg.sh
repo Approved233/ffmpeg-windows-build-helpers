@@ -996,7 +996,7 @@ build_libwebp() {
 
 build_harfbuzz() {
   local new_build=false
-  do_git_checkout https://github.com/harfbuzz/harfbuzz.git harfbuzz_git origin/main
+  do_git_checkout https://github.com/harfbuzz/harfbuzz.git harfbuzz_git "origin/main"
   if [ ! -f harfbuzz_git/already_done_harf ]; then # Not done or new master, so build
     new_build=true
   fi
@@ -1345,7 +1345,7 @@ build_lame() {
 }
 
 build_twolame() {
-  do_git_checkout https://github.com/njh/twolame.git origin/main
+  do_git_checkout https://github.com/njh/twolame.git twolame_git "origin/main"
   cd twolame_git
     if [[ ! -f Makefile.am.bak ]]; then # Library only, front end refuses to build for some reason with git master
       sed -i.bak "/^SUBDIRS/s/ frontend.*//" Makefile.am || exit 1
